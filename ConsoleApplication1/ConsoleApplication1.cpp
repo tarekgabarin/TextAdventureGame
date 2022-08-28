@@ -3,15 +3,9 @@
 
 #include <iostream>
 
-void printMyName(std::string name) {
-    std::cout << "my name is" + name << std::endl;
-}
-
-
 int main()
 {
     std::cout << "Hello World!\n";
-    printMyName("Tarek");
 }
 
 
