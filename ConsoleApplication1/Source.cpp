@@ -26,7 +26,7 @@ class Hotspot
 };
 
 /// <summary>
-/// A Derived class of UseHotspot for instances where player takes an InventoryItem upon utillize "Use" command on a hotspot
+/// A Derived class of Hotspot for instances wherein player takes an InventoryItem upon utillizing "Use" command on a given hotspot
 /// </summary>
 class ItemHotSpot : public Hotspot
 {
@@ -47,7 +47,8 @@ class TextAdventure
 	int CurrentSceneIndex = 0;
 
 	/// <summary>
-	/// A Vector containing the Ids of Items the player has 
+	/// A Vector (a List in other languages) containing the Ids of Items the player has. 
+	/// Also, PASS IT BY REFERENCE WHEN YOU PASS IT TO A FUNCTION
 	/// </summary>
 	std::vector<int> InventoryOfPlayerItemsByItemId;
 
@@ -84,8 +85,36 @@ class TextAdventure
 					break;
 			}
 		}
-		bool CheckIfPlayerHasItem() 
+		void GoToNextScene() 
 		{
+			CurrentSceneIndex += 1;
+
+			/// fill out more code for when the scene changes
+		}
+		bool CheckIfPlayerHasItem(int ItemId) 
+		{
+			return std::find(InventoryOfPlayerItemsByItemId.begin(), InventoryOfPlayerItemsByItemId.end(), ItemId) != InventoryOfPlayerItemsByItemId.end();
+		}
+		void AddItemToInventory(int ItemId) 
+		{
+			InventoryOfPlayerItemsByItemId.push_back(ItemId);
+		}
+
+		void RemoveItemFromInventory(int ItemId) 
+		{
+			if (CheckIfPlayerHasItem(ItemId)) 
+			{
+
+				for (int i = 0; i < InventoryOfPlayerItemsByItemId.size(); i++)
+				{
+					if (InventoryOfPlayerItemsByItemId[i] == ItemId)
+					{
+						InventoryOfPlayerItemsByItemId.erase(InventoryOfPlayerItemsByItemId.begin() + i);
+						break;
+					}
+				}
+
+			}
 
 		}
 
