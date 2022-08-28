@@ -11,6 +11,10 @@ class Hotspot
 {
 	public:
 		/// <summary>
+		/// The text for the hotspot when its listed as an option in the prompt
+		/// </summary>
+		String MenuText;
+		/// <summary>
 		/// Text that comes up whenever a character looks at, uses, or talks to a hotspot
 		/// </summary>
 		String ActionText;
@@ -18,10 +22,11 @@ class Hotspot
 		/// Determines whether a new scene is unlocked when player does action. if an item is required, use use the boolean result of CheckIfPlayerHasItem as the value. Else, just put True or False here.
 		/// </summary>
 		bool DoesPlayerActionUnlockNewScene;
-		Hotspot(String x, bool y) 
+		Hotspot(String x, bool y, String z) 
 		{
 			ActionText = x;
 			DoesPlayerActionUnlockNewScene = y;
+			MenuText = z;
 		}
 };
 
@@ -118,7 +123,7 @@ class TextAdventure
 
 		}
 
-		///use unordered maps for the scenes
+		///use unordered maps for the scenes. I want to use a hashtable, look into it for the scenes
 
 		
 
